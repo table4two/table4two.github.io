@@ -1,0 +1,209 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');*/
+@charset 'utf-8';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* prevent font scaling in landscape on iOS devices */
+  scroll-behavior: smooth; /* not supported in all browsers */
+}
+
+/*font*/
+@font-face {
+  font-family: 'Itim';
+  src: url('Itim-Regular.ttf');
+}
+h1, h2, h3, p, nav {
+  font-family: Itim, Arial
+}
+
+/*text and links*/
+p {
+  line-height: 180%;
+}
+
+a:link, a:visited {
+  color: black;
+}
+
+.current {
+  font-weight: 900;
+}
+
+/*layout*/
+/*header, article {
+  padding: 1em;
+}*/
+
+/*container*/
+#container {
+  /*max-width: 60em;
+  margin: auto;*/
+}
+
+article {
+  display: block; /*grid;*/
+  grid-template-columns: 1fr 1fr; /*repeat(2, 1fr);*/
+  gap: 1em;
+}
+
+.a, .b, .c, .d, .e, .f {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 0, 0, 0.2);
+  /*padding: 10px;*/
+  border: 1px solid red;
+  border-radius: 10px; /* rounded corners */
+}
+
+/* grid template areas */
+
+.a {grid-area: a;}
+
+.b {grid-area: b;}
+
+.c {grid-area: c;}
+
+.d {grid-area: d;}
+
+.e {grid-area: e;}
+
+.f {grid-area: f;}
+
+
+/*layout*/
+#home {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;  
+}
+
+img.cover {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p, h3 {
+  margin-top: 0;
+}
+
+/*flip card effect*/
+.flip-card {
+  background-color: transparent;
+  width: 70%;
+  margin: auto;
+  height: 335px;
+  border-radius: 10px;
+  perspective: 1000px;
+  /*border: 1px solid black;*/
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: transparent;
+  color: black;
+  max-height: 335px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  
+}
+
+.flip-card-front > img {
+  height: 100%;
+  width: auto;
+}
+
+.flip-card-back {
+  background-color: #f6f3e9;;
+  /*color: white;*/
+  transform: rotateY(180deg);
+
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two fractional width columns */
+  grid-auto-rows: minmax(100px, auto); /* min 100px; max automatically calculated */
+  column-gap: 10px;
+  row-gap: 1em;
+  grid-template-areas: /* placing grid items */
+    'a c'
+    'b d'
+}
+
+@media (min-width: 60em) {
+  #container {
+  max-width: 60em;
+  margin: auto;
+  }
+
+  nav {
+    flex-direction: row;
+  }
+
+  nav > a {
+    margin-left: 1em;
+  }
+
+  article {
+    padding-top: 5.5em;
+    margin-top: -4.5em;
+  }
+
+  
+}
+
+@media (min-width: 70em) {
+
+  article {
+    display: grid;
+  }
+}
+
+@media (min-width: 80em) {
+
+  .flip-card-front > img {
+    width: 100%;
+    height: auto;
+  }
+}
